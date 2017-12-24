@@ -6,10 +6,8 @@
 import csv
 
 ''' Function takes in a given text filename and counts one-grams in the file '''
-def getOneGrams(filename):
-    
+def getOneGrams(reader):
     oneGramCounts = {}
-    reader = csv.DictReader(filename, delimiter = ',')
     for row in reader:
         line = row['status_message']
         # Clean out punctuation
@@ -28,6 +26,65 @@ def getOneGrams(filename):
 
     return oneGramCounts
 
+def getTwoGrams(reader):
+    ''' Function takes in a given text filename and an integer n and counts n-grams in the file '''
+    twoGramCounts = {}
+    #reader = csv.DictReader(filename, delimiter = ',')
+    for row in reader:
+        line = row['status_message']
+        # Clean out punctuation
+        for ch in '!@#$%^&*()_+-=;:",./<>?\\':
+            line = line.replace(ch, ' ')
+        
+        while '  ' in line:
+            line = line.replace('  ', ' ')
+        
+        # Reduce to all lowercase
+        line = line.lower()
+        
+        # Split into words
+        words = line.split()
+        
+        # Add to twoGramCounts for each word
+        i = 0
+        for i in range(len(words) - 1):
+            word = words[i] + ' ' + words[i+1]
+            #print(word)
+            twoGramCounts[word] = twoGramCounts.get(word, 0) + 1
+
+    return twoGramCounts
+
+def getNGrams(reader, n):
+    ''' Function takes in a given text filename and an integer n and counts n-grams in the file '''
+    nGramCounts = {}
+    #reader = csv.DictReader(filename, delimiter = ',')
+    for row in reader:
+        line = row['status_message']
+        # Clean out punctuation
+        for ch in '!@#$%^&*()_+-=;:",./<>?\\':
+            line = line.replace(ch, ' ')
+        
+        while '  ' in line:
+            line = line.replace('  ', ' ')
+        
+        # Reduce to all lowercase
+        line = line.lower()
+        
+        # Split into words
+        words = line.split()
+        
+        # Add to twoGramCounts for each word
+        i = 0
+        for i in range(len(words) - n + 1):
+            sublist = words[i:i+n]
+            j = 0
+            word = ''
+            for j in range(len(sublist)):
+                word += sublist[j] + ' '
+            nGramCounts[word] = nGramCounts.get(word, 0) + 1
+
+    return nGramCounts
+
 def byCount(pair):
     ''' Helper function to let printTopN() sort (n-gram, count) tuples. '''
     return pair[1]
@@ -45,8 +102,13 @@ def printTopN(countDict, n):
 
 def main():
     with open("136598840398995_facebook_statuses.csv") as file:
-        oneGrams = getOneGrams(file)
-        printTopN(oneGrams, 50)
+        reader = csv.DictReader(file, delimiter = ',')
+        #oneGrams = getOneGrams(reader)
+        #printTopN(oneGrams, 50)
+        #twoGrams = getTwoGrams(reader)
+        #printTopN(twoGrams, 50)
+        nGrams = getNGrams(reader, 4)
+        printTopN(nGrams, 50)
 
 
 if __name__ == '__main__':
