@@ -27,7 +27,7 @@ def getOneGrams(reader):
     return oneGramCounts
 
 def getTwoGrams(reader):
-    ''' Function takes in a given text filename and an integer n and counts n-grams in the file '''
+    ''' Function takes in a given text filename and returns 2-grams for the given text '''
     twoGramCounts = {}
     #reader = csv.DictReader(filename, delimiter = ',')
     for row in reader:
