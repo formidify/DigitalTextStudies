@@ -22,7 +22,7 @@ def main():
 			for k in ss:
 				print('{0}: {1}, '.format(k, ss[k]), end='')
 			print()
-
+			
 			sum += 1
 			neg += ss['neg']
 			neu += ss['neu']

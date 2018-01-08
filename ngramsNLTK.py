@@ -24,12 +24,12 @@ def main():
 				if 'CD' in data[i][1]:
 					tokens[i] = 'num'
 
-			ngs = nltk.ngrams(tokens, 4)
+			ngs = nltk.ngrams(tokens, 1)
 			fdist += ngs
 
 		fdist = nltk.FreqDist(fdist)
-		fdist = fdist.most_common(50)
-		
+		fdist = fdist.most_common(550)
+
 		for i in range(50):
 			word= fdist[i][0]
 			count = fdist[i][1]

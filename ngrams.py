@@ -4,6 +4,7 @@
 # some of the methods originally written by Eric Alexander and modified
 
 import csv
+import nltk
 
 ''' Function takes in a given text filename and counts one-grams in the file '''
 def getOneGrams(reader):
@@ -45,6 +46,13 @@ def getTwoGrams(reader):
         # Split into words
         words = line.split()
         
+        # Take care of numbers
+        data = nltk.pos_tag(words)
+
+        for i in range(len(data)):
+            if 'CD' in data[i][1]:
+                words[i] = 'num'
+
         # Add to twoGramCounts for each word
         i = 0
         for i in range(len(words) - 1):
@@ -72,6 +80,13 @@ def getNGrams(reader, n):
         
         # Split into words
         words = line.split()
+
+        # Take care of numbers
+        data = nltk.pos_tag(words)
+
+        for i in range(len(data)):
+            if 'CD' in data[i][1]:
+                words[i] = 'num'
         
         # Add to twoGramCounts for each word
         i = 0
@@ -107,8 +122,8 @@ def main():
         #printTopN(oneGrams, 50)
         #twoGrams = getTwoGrams(reader)
         #printTopN(twoGrams, 50)
-        nGrams = getNGrams(reader, 4)
-        printTopN(nGrams, 50)
+        nGrams = getNGrams(reader, 1)
+        printTopN(nGrams, 550)
 
 
 if __name__ == '__main__':
