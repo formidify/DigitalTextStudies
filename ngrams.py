@@ -20,10 +20,15 @@ def getOneGrams(reader):
         
         # Split into words
         words = line.split()
-        
+
+        # Get stopwords
+        with open("stopwords.txt") as f:
+            stopwords = [word for line in f for word in line.split()]
+
         # Add to oneGramCounts for each word
         for word in words:
-            oneGramCounts[word] = oneGramCounts.get(word, 0) + 1
+            if word not in stopwords:
+                oneGramCounts[word] = oneGramCounts.get(word, 0) + 1
 
     return oneGramCounts
 
@@ -46,27 +51,37 @@ def getTwoGrams(reader):
         # Split into words
         words = line.split()
         
+        '''
         # Take care of numbers
         data = nltk.pos_tag(words)
 
+        
         for i in range(len(data)):
             if 'CD' in data[i][1]:
                 words[i] = 'num'
+        '''
+        # Get stopwords
+        with open("stopwords.txt") as f:
+            stopwords = [word for line in f for word in line.split()]
 
         # Add to twoGramCounts for each word
         i = 0
         for i in range(len(words) - 1):
-            word = words[i] + ' ' + words[i+1]
-            #print(word)
-            twoGramCounts[word] = twoGramCounts.get(word, 0) + 1
+            # the case when phrases with both stopwords are excluded
+            if not (words[i] in stopwords and words[i+1] in stopwords):
+
+            # the case when only phrases with both non-stopwords are included
+            # if words[i] not in stopwords and words[i+1] not in stopwords:
+                word = words[i] + ' ' + words[i+1]
+                twoGramCounts[word] = twoGramCounts.get(word, 0) + 1
 
     return twoGramCounts
 
 def getNGrams(reader, n):
     ''' Function takes in a given text filename and an integer n and counts n-grams in the file '''
     nGramCounts = {}
-    #reader = csv.DictReader(filename, delimiter = ',')
     for row in reader:
+
         line = row['status_message']
         # Clean out punctuation
         for ch in '!@#$%^&*()_+-=;:",./<>?\\':
@@ -87,6 +102,8 @@ def getNGrams(reader, n):
         for i in range(len(data)):
             if 'CD' in data[i][1]:
                 words[i] = 'num'
+            # if words[i] in stopwords:
+                # words.remove(words[i])
         
         # Add to twoGramCounts for each word
         i = 0
@@ -118,12 +135,15 @@ def printTopN(countDict, n):
 def main():
     with open("136598840398995_facebook_statuses.csv") as file:
         reader = csv.DictReader(file, delimiter = ',')
-        #oneGrams = getOneGrams(reader)
-        #printTopN(oneGrams, 50)
-        #twoGrams = getTwoGrams(reader)
-        #printTopN(twoGrams, 50)
-        nGrams = getNGrams(reader, 1)
-        printTopN(nGrams, 550)
+        n = int(input("How many grams? "))
+        display = int(input("How many to display? "))
+        if n == 1:
+            nGrams = getOneGrams(reader)
+        elif n == 2:
+            nGrams = getTwoGrams(reader)
+        else:
+            nGrams = getNGrams(reader, n)
+        printTopN(nGrams, display)
 
 
 if __name__ == '__main__':
