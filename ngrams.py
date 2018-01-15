@@ -68,10 +68,10 @@ def getTwoGrams(reader):
         i = 0
         for i in range(len(words) - 1):
             # the case when phrases with both stopwords are excluded
-            if not (words[i] in stopwords and words[i+1] in stopwords):
+            # if not (words[i] in stopwords and words[i+1] in stopwords):
 
             # the case when only phrases with both non-stopwords are included
-            # if words[i] not in stopwords and words[i+1] not in stopwords:
+            if words[i] not in stopwords and words[i+1] not in stopwords:
                 word = words[i] + ' ' + words[i+1]
                 twoGramCounts[word] = twoGramCounts.get(word, 0) + 1
 
@@ -128,9 +128,14 @@ def printTopN(countDict, n):
     dictItems.sort()
     dictItems.sort(key=byCount, reverse=True)
     
+    # calculate average
+    # sum = 0
     for i in range(n):
         word, count = dictItems[i]
         print('{} {}'.format(word, count))
+        # add average
+        # sum += count
+    # print("The average of the first", n, "words is ", sum/n)
 
 def main():
     with open("136598840398995_facebook_statuses.csv") as file:
@@ -143,6 +148,7 @@ def main():
             nGrams = getTwoGrams(reader)
         else:
             nGrams = getNGrams(reader, n)
+
         printTopN(nGrams, display)
 
 
