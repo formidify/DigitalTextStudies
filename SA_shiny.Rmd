@@ -1,0 +1,49 @@
+---
+title: "SA_shiny"
+author: "James Yang"
+date: "1/25/2018"
+output: html_document
+runtime: shiny
+---
+
+```{r}
+library(ggplot2)
+library(readr)
+sa <- read_csv("~/Desktop/SocialMediaStory_NLP/sa_analysis.csv")
+head(sa)
+```
+
+```{r}
+ggplot(data=sa) + geom_histogram(aes(pos))
+ggplot(data=sa) + geom_histogram(aes(neu))
+ggplot(data=sa) + geom_histogram(aes(neg))
+ggplot(data=sa) + geom_histogram(aes(compound))
+```
+
+```{r}
+plot <- ggplot(data = sa)
+
+inputPanel(
+  selectInput("y", label = "y-variable:",
+              choices = c("neg", "neu", "pos", "compound"), selected = "neg"),
+  
+  selectInput("x", label = "x-variable:",
+              choices = c("neg", "neu", "pos", "compound"), selected = "pos")
+)
+
+output$myplot <- renderPlot({
+    plot + geom_point(aes(x = eval(as.symbol(input$x)), y = eval(as.symbol(input$y))), color = "pink", size = 1.5) + 
+      ggtitle(paste("Plot of", input$y, "against", input$x, sep = " ")) +
+      xlab(input$x) + ylab(input$y) + coord_cartesian(ylim=c(0,1), xlim=c(-1,1))
+})
+
+output$click_info <- renderPrint({
+  paste("pos: ", as.character(nearPoints(sa, input$plot_click, xvar = input$x, yvar = input$y)[, "pos"]),
+        " neg: ", as.character(nearPoints(sa, input$plot_click, xvar = input$x, yvar = input$y)[, "neg"]), 
+        " neu: ", as.character(nearPoints(sa, input$plot_click, xvar = input$x, yvar = input$y)[, "neu"]),
+        " comp: ", as.character(nearPoints(sa, input$plot_click, xvar = input$x, yvar = input$y)[, "compound"]), sep = "")
+})
+plotOutput("myplot",height=400,width = 600,click="plot_click")
+verbatimTextOutput("click_info")
+```
+

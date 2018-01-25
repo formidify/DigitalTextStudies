@@ -13,21 +13,24 @@ def main():
 
 		reader = csv.DictReader(file, delimiter = ',')
 		sid = SentimentIntensityAnalyzer()
+		with open ("sa_analysis.csv", 'w') as myfile:
+			writer = csv.writer(myfile)
+			for row in reader:
+				line = row['status_message']
+				print(line)
 
-		for row in reader:
-			line = row['status_message']
-			print(line)
+				ss = sid.polarity_scores(line)
+				writer.writerow([ss['neg'], ss['neu'], ss['pos'], ss['compound']])
 
-			ss = sid.polarity_scores(line)
-			for k in ss:
-				print('{0}: {1}, '.format(k, ss[k]), end='')
-			print()
-			
-			sum += 1
-			neg += ss['neg']
-			neu += ss['neu']
-			pos += ss['pos']
-			compound += ss['compound']
+				for k in ss:
+					print('{0}: {1}, '.format(k, ss[k]), end='')
+				print()
+				
+				sum += 1
+				neg += ss['neg']
+				neu += ss['neu']
+				pos += ss['pos']
+				compound += ss['compound']
 			
 
 		print('The average of neg is {0}.'.format(neg/sum))
