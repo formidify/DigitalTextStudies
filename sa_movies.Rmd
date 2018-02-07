@@ -1,0 +1,62 @@
+---
+title: "SA_movies"
+author: "James Yang"
+date: "1/29/2018"
+output: html_document
+runtime: shiny
+---
+
+***Movie Reviews***
+
+```{r}
+library(readr)
+library(tidyr)
+library(ggplot2)
+
+movies <- read_csv("~/Desktop/SocialMediaStory_NLP/scores_movies.csv")
+ggplot(data=movies) + geom_histogram(aes(pos), bins = 50)
+ggplot(data=movies) + geom_histogram(aes(neu), bins = 50)
+ggplot(data=movies) + geom_histogram(aes(neg), bins = 50)
+ggplot(data=movies) + geom_histogram(aes(compound), bins = 50)
+
+# mean(movies$neg) # mean of neg
+# sd(movies$neg) # sd of neg
+# 
+# mean(movies$neu) # mean of neu
+# sd(movies$neu) # sd of neu
+# 
+# mean(movies$pos) # mean of pos
+# sd(movies$pos) # sd of pos
+# 
+# mean(movies$compound) # mean of compound
+# sd(movies$compound) # sd of compound
+
+sum(movies$pos > movies$neg) # number of posts more positive than negative
+sum(movies$pos < movies$neg) # number of posts more negative than positive
+sum(movies$pos == movies$neg) # number of posts as negative as positive
+
+plot_mov <- ggplot(data = movies)
+
+inputPanel(
+  selectInput("y", label = "y-variable:",
+              choices = c("neg", "neu", "pos", "compound"), selected = "neg"),
+  
+  selectInput("x", label = "x-variable:",
+              choices = c("neg", "neu", "pos", "compound"), selected = "pos")
+)
+
+output$myplot <- renderPlot({
+    plot_mov + geom_point(aes(x = eval(as.symbol(input$x)), y = eval(as.symbol(input$y))), color = "pink", size = 1.5) + 
+      ggtitle(paste("Plot of", input$y, "against", input$x, sep = " ")) +
+      xlab(input$x) + ylab(input$y) + coord_cartesian(ylim=c(0,1), xlim = c(0,1)) + geom_abline(slope=1)
+})
+
+output$click_info <- renderPrint({
+  paste("pos: ", as.character(nearPoints(movies, input$plot_click, xvar = input$x, yvar = input$y)[, "pos"]),
+        " neg: ", as.character(nearPoints(movies, input$plot_click, xvar = input$x, yvar = input$y)[, "neg"]), 
+        " neu: ", as.character(nearPoints(movies, input$plot_click, xvar = input$x, yvar = input$y)[, "neu"]),
+        " comp: ", as.character(nearPoints(movies, input$plot_click, xvar = input$x, yvar = input$y)[, "compound"]), sep = "")
+})
+plotOutput("myplot",height=400,width = 600,click="plot_click")
+verbatimTextOutput("click_info")
+```

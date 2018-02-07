@@ -9,19 +9,60 @@ runtime: shiny
 ```{r}
 library(ggplot2)
 library(readr)
+library(dplyr)
 sa <- read_csv("~/Desktop/SocialMediaStory_NLP/sa_analysis.csv")
 head(sa)
+
+# mean(sa$neg) # mean of neg
+# sd(sa$neg) # sd of neg
+# 
+# mean(sa$neu) # mean of neu
+# sd(sa$neu) # sd of neu
+# 
+# mean(sa$pos) # mean of pos
+# sd(sa$pos) # sd of pos
+# 
+# mean(sa$compound) # mean of compound
+# sd(sa$compound) # sd of compound
+
+sum(sa$pos > sa$neg) # number of posts more positive than negative
+sum(sa$pos < sa$neg) # number of posts more negative than positive
+sum(sa$pos == sa$neg) # number of posts as negative as positive
 ```
 
 ```{r}
 ggplot(data=sa) + geom_histogram(aes(pos))
+
+# slice out most positive posts
+sa_pos <- sa %>%
+  filter(pos > 0.5) %>%
+  arrange(desc(pos))
+sa_pos
+sa_pos$line
+
 ggplot(data=sa) + geom_histogram(aes(neu))
+
+# slice out most neutral posts
+sa_neu <- sa %>%
+  filter(neu > 0.9) %>%
+  arrange(desc(neu))
+sa_neu
+sa_neu$line
+
 ggplot(data=sa) + geom_histogram(aes(neg))
+
+# slice out most negative posts
+sa_neg <- sa %>%
+  filter(neg > 0.5) %>%
+  arrange(desc(neg))
+sa_neg
+sa_neg$line
+
 ggplot(data=sa) + geom_histogram(aes(compound))
 ```
 
 ```{r}
-plot <- ggplot(data = sa)
+plot_sa <- ggplot(data = sa)
 
 inputPanel(
   selectInput("y", label = "y-variable:",
@@ -32,9 +73,9 @@ inputPanel(
 )
 
 output$myplot <- renderPlot({
-    plot + geom_point(aes(x = eval(as.symbol(input$x)), y = eval(as.symbol(input$y))), color = "pink", size = 1.5) + 
+    plot_sa + geom_point(aes(x = eval(as.symbol(input$x)), y = eval(as.symbol(input$y))), color = "pink", size = 1.5) + 
       ggtitle(paste("Plot of", input$y, "against", input$x, sep = " ")) +
-      xlab(input$x) + ylab(input$y) + coord_cartesian(ylim=c(0,1), xlim=c(-1,1))
+      xlab(input$x) + ylab(input$y) + coord_cartesian(ylim=c(0,1), xlim = c(0,1)) + geom_abline(slope=1)
 })
 
 output$click_info <- renderPrint({

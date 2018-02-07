@@ -5,12 +5,14 @@
 
 import csv
 import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 ''' Function takes in a given text filename and counts one-grams in the file '''
 def getOneGrams(reader):
     oneGramCounts = {}
     for row in reader:
         line = row['status_message']
+
         # Clean out punctuation
         for ch in '!@#$%^&*()_+-=;:",./<>?\\':
             line = line.replace(ch, ' ')
@@ -30,6 +32,35 @@ def getOneGrams(reader):
             if word not in stopwords:
                 oneGramCounts[word] = oneGramCounts.get(word, 0) + 1
 
+    return oneGramCounts
+
+def getOneGrams_subset(reader):
+    oneGramCounts = {}
+    sid = SentimentIntensityAnalyzer()
+    sum = 0
+    for row in reader:
+        line = row['status_message']
+
+        ss = sid.polarity_scores(line)
+
+        if ss['compound'] <= 0.2 and ss['compound'] >= -0.2: # specifies what values of compound to keep
+            sum = sum + 1
+            for ch in '!@#$%^&*()_+-=;:",./<>?\\':
+                line = line.replace(ch, ' ')
+        
+            line = line.lower()
+            
+            words = line.split()
+
+            # Get stopwords
+            with open("stopwords.txt") as f:
+                stopwords = [word for line in f for word in line.split()]
+
+            for word in words:
+                if word not in stopwords:
+                    oneGramCounts[word] = oneGramCounts.get(word, 0) + 1
+
+    print(sum)
     return oneGramCounts
 
 def getTwoGrams(reader):
@@ -77,12 +108,100 @@ def getTwoGrams(reader):
 
     return twoGramCounts
 
-def getNGrams(reader, n):
+def getTwoGrams_subset(reader):
+    twoGramCounts = {}
+    sid = SentimentIntensityAnalyzer()
+
+    for row in reader:
+        line = row['status_message']
+
+        ss = sid.polarity_scores(line)
+
+        if ss['compound'] <= 0.2 and ss['compound'] >= -0.2: # specifies what values of compound to keep
+
+            for ch in '!@#$%^&*()_+-=;:",./<>?\\':
+                line = line.replace(ch, ' ')
+            
+            while '  ' in line:
+                line = line.replace('  ', ' ')
+            
+            line = line.lower()
+            
+            words = line.split()
+            
+            # Get stopwords
+            with open("stopwords.txt") as f:
+                stopwords = [word for line in f for word in line.split()]
+
+            i = 0
+            for i in range(len(words) - 1):
+                # the case when phrases with both stopwords are excluded
+                if not (words[i] in stopwords and words[i+1] in stopwords):
+
+                # the case when only phrases with both non-stopwords are included
+                # if words[i] not in stopwords and words[i+1] not in stopwords:
+                    word = words[i] + ' ' + words[i+1]
+                    twoGramCounts[word] = twoGramCounts.get(word, 0) + 1
+
+    return twoGramCounts
+
+
+'''
+Identifies n-grams for words with a given range of compound values
+'''
+
+def getNGrams_subset(reader, n):
     ''' Function takes in a given text filename and an integer n and counts n-grams in the file '''
+    nGramCounts = {}
+    sid = SentimentIntensityAnalyzer()
+    sum = 0 # how many posts in a category given compound value
+
+    for row in reader:
+
+        line = row['status_message']
+
+        ss = sid.polarity_scores(line)
+
+
+        if ss['compound'] <= 1 and ss['compound'] >= 0.8: # specifies what values of compound to keep
+            sum = sum + 1
+            for ch in '!@#$%^&*()_+-=;:",./<>?\\':
+                line = line.replace(ch, ' ')
+            
+            while '  ' in line:
+                line = line.replace('  ', ' ')
+            
+            line = line.lower()
+            
+            words = line.split()
+
+            data = nltk.pos_tag(words)
+
+            for i in range(len(data)):
+                if 'CD' in data[i][1]:
+                    words[i] = 'num'
+                # if words[i] in stopwords:
+                    # words.remove(words[i])
+            
+            i = 0
+            for i in range(len(words) - n + 1):
+                sublist = words[i:i+n]
+                j = 0
+                word = ''
+                for j in range(len(sublist)):
+                    word += sublist[j] + ' '
+                nGramCounts[word] = nGramCounts.get(word, 0) + 1
+
+    print(sum)
+    return nGramCounts
+
+
+def getNGrams(reader, n):
     nGramCounts = {}
     for row in reader:
 
         line = row['status_message']
+
         # Clean out punctuation
         for ch in '!@#$%^&*()_+-=;:",./<>?\\':
             line = line.replace(ch, ' ')
@@ -142,12 +261,13 @@ def main():
         reader = csv.DictReader(file, delimiter = ',')
         n = int(input("How many grams? "))
         display = int(input("How many to display? "))
+        
         if n == 1:
-            nGrams = getOneGrams(reader)
+            nGrams = getOneGrams_subset(reader)
         elif n == 2:
-            nGrams = getTwoGrams(reader)
-        else:
-            nGrams = getNGrams(reader, n)
+            nGrams = getTwoGrams_subset(reader)
+        else: 
+            nGrams = getNGrams_subset(reader, n)
 
         printTopN(nGrams, display)
 
