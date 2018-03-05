@@ -1,0 +1,48 @@
+---
+title: "par_coord"
+author: "James Yang"
+date: "2/15/2018"
+output: html_document
+---
+```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(GGally)
+library(readr)
+
+grams <- read_csv("~/Desktop/SocialMediaStory_NLP/1gramsData.csv")
+lexicon <- read_csv("~/Desktop/SocialMediaStory_NLP/vader_sentiment_lexicon.csv")
+
+grams <- grams %>% group_by(dataset) %>% select(word, dataset, prop)
+
+happy_words <- c("happy", "friend", "good", "better", "best", "great", "love", 
+                 "nice", "fun", "smile", "enjoy")
+
+bad_words <- c("sad", "cry", "hurt", "bad", "worse", "worst", "terrible", "horrible", 
+               "pain", "loss", "death")
+
+(good <- grams %>% filter(word %in% happy_words) %>%
+  spread(dataset, prop))
+
+ggparcoord(good, columns = 2:6, groupColumn = "word",scale = 'globalminmax')
+
+(bad <- grams %>% filter(word %in% bad_words) %>%
+  spread(dataset, prop))
+
+ggparcoord(bad, columns = 2:6, groupColumn = "word",scale = 'globalminmax')
+```
+
+```{r}
+joined <- inner_join(lexicon, grams, by = "word")
+joined <- joined %>% spread(dataset, prop) %>%
+  filter(!is.na(amazon) & !is.na(metoo) & !is.na(movies) & !is.na(nyt) 
+           & !is.na(tweets)) %>%
+  select(word, mean, amazon, metoo, movies, nyt, tweets)
+joined <- joined %>% gather(key = dataset, value = prop, amazon, metoo, movies, nyt, tweets)
+# ggparcoord(joined, columns = 3:7, groupColumn = "mean",scale = 'globalminmax')
+
+write.csv(joined, file = "parcoord_join.csv")
+# library(cdparcoord)
+```
+

@@ -1,0 +1,144 @@
+---
+title: "nGrams_compare"
+author: "James Yang"
+date: "2/6/2018"
+output: html_document
+---
+```{r eval=FALSE}
+library(readr)
+ngrams <- read_csv("~/Desktop/SocialMediaStory_NLP/3gramsData.csv")
+View(ngrams)
+```
+
+```{r eval=FALSE}
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+
+ngrams_prop <- ngrams %>%
+  filter(!grepl("anonymous", word) & !grepl("url", word) & !grepl("http", word) & !grepl("rt", word)) %>%
+  filter(word != "''") %>%
+  group_by(dataset) %>%
+  mutate(prop = count / sum(count)) %>%
+  arrange(desc(prop))
+  
+  
+ngrams_prop %>% slice(1:50) %>% mutate(order = 1:50) %>%
+  ggplot(aes(y=prop, x=order, fill = dataset, group = dataset, label = word)) +
+  geom_bar(position="dodge", stat="identity") +
+    scale_x_discrete(limits = 1:50) +
+    geom_text(position = position_dodge(0.9)) +
+    coord_flip()
+
+ngrams_prop %>% slice(1:5) %>% mutate(order = 1:5) %>%
+  ggplot(aes(y=prop, x=order, fill = dataset, group = dataset, label = word)) +
+  geom_bar(position="dodge", stat="identity") +
+    scale_x_discrete(limits = 1:5) +
+    geom_text(position = position_dodge(0.9)) +
+    scale_y_continuous(limits = c(0, 0.002)) + coord_flip()
+
+ngrams_prop %>% slice(6:10) %>% mutate(order = 6:10) %>%
+  ggplot(aes(y=prop, x=order, fill = dataset, group = dataset, label = word)) +
+  geom_bar(position="dodge", stat="identity") +
+    scale_x_discrete(limits = 6:10) +
+    geom_text(position = position_dodge(0.9)) +
+    scale_y_continuous(limits = c(0, 0.002)) + coord_flip()
+
+ngrams_prop %>% slice(11:15) %>% mutate(order = 11:15) %>%
+  ggplot(aes(y=prop, x=order, fill = dataset, group = dataset, label = word)) +
+  geom_bar(position="dodge", stat="identity") +
+    scale_x_discrete(limits = 11:15) +
+    geom_text(position = position_dodge(0.9)) +
+    scale_y_continuous(limits = c(0, 0.002)) + coord_flip()
+
+ngrams_prop %>% slice(16:20) %>% mutate(order = 16:20) %>%
+  ggplot(aes(y=prop, x=order, fill = dataset, group = dataset, label = word)) +
+  geom_bar(position="dodge", stat="identity") +
+    scale_x_discrete(limits = 16:20) +
+    geom_text(position = position_dodge(0.9)) +
+    scale_y_continuous(limits = c(0, 0.002)) + coord_flip()
+
+ngrams_prop %>% slice(21:25) %>% mutate(order = 21:25) %>%
+  ggplot(aes(y=prop, x=order, fill = dataset, group = dataset, label = word)) +
+  geom_bar(position="dodge", stat="identity") +
+    scale_x_discrete(limits = 21:25) +
+    geom_text(position = position_dodge(0.9)) +
+    scale_y_continuous(limits = c(0, 0.002)) + coord_flip()
+
+ngrams_prop %>% slice(26:30) %>% mutate(order = 26:30) %>%
+  ggplot(aes(y=prop, x=order, fill = dataset, group = dataset, label = word)) +
+  geom_bar(position="dodge", stat="identity") +
+    scale_x_discrete(limits = 26:30) +
+    geom_text(position = position_dodge(0.9)) +
+    scale_y_continuous(limits = c(0, 0.002)) + coord_flip()
+```
+
+**Hypothesis 2**
+
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+sa_analysis <- read_csv("~/Desktop/SocialMediaStory_NLP/scores_nyt.csv")
+View(sa_analysis)
+```
+
+```{r}
+men_words <- c("man", "men", "male", "males", "boy", "boys", "boyfriend", "boyfriends",
+               "husband", "husbands", "father", "fathers", "brother", "brothers")
+posts <- sa_analysis$line
+props <- c()
+counts <- c()
+for (i in 1:length(posts)) {
+  count <- length(strsplit(posts[i], split = " ")[[1]])
+  sum <- 0
+  for (j in 1:length(men_words)) {
+    sum <- sum + sum(grep(men_words[j], posts[i]))
+  }
+  counts[i] <- count
+  props[i] <- sum/count
+}
+
+sa_analysis$prop <- props
+sa_analysis$length <- counts
+
+ggplot(sa_analysis) +
+  geom_point(aes(x = compound, y = prop)) +
+  scale_x_continuous(limits = c(-1, 1)) +
+  scale_y_continuous(limits = c(0, 0.20))
+```
+
+**Hypothesis 3**
+
+```{r}
+levels <- c("-1 to -0.6", "-0.6 to -0.2", "-0.2 to 0.2", "0.2 to 0.6", "0.6 to 1.0")
+c <- sa_analysis$compound
+sa_analysis$compound_levels <- ifelse(-1 <= c & c < -0.6, "-1 to -0.6", 
+    ifelse(-0.6 <= c & c < -0.2, "-0.6 to -0.2",
+        ifelse(-0.2 <= c & c < 0.2, "-0.2 to 0.2", 
+               ifelse(0.2 <= c & c < 0.6, "0.2 to 0.6", "0.6 to 1.0"))))
+
+# l <- sa_analysis$length
+# sa_analysis$length_levels <- ifelse(1 <= l & l < 5, "1~5", 
+#     ifelse(5 <= l & l < 10, "5~10", ifelse(10 <= l & l < 20, "10~20",
+#         ifelse(20 <= l & l < 40, "20~40", 
+#                ifelse(40 <= l & l < 60, "40~60", 
+#                       ifelse(60 <= l & l < 80, "60~80", 
+#                              ifelse(80 <= l & l < 120, "80~120", 
+#                                     ifelse(120 <= l & l < 220, "120~220",
+#                                            ifelse(220 <= l & l < 320, 
+#                                               "220~320", "320+")))))))))
+
+sa_updated <- sa_analysis %>%
+  mutate(compound_levels = factor(compound_levels, c("-1 to -0.6", "-0.6 to -0.2", "-0.2 to 0.2", "0.2 to 0.6", "0.6 to 1.0"))) %>%
+  mutate(length_levels = as.factor(cut_number(length, 10))) %>%
+  group_by(compound_levels, length_levels) %>%
+  mutate(count = n())
+
+ggplot(sa_updated, aes(x = length_levels, y = compound_levels)) +
+  geom_tile(aes(fill = count)) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
