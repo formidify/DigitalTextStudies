@@ -20,10 +20,7 @@ def main():
     txt = sys.argv[1]
     csv_final = sys.argv[2]
 
-    # myfile = open("metoo_d3.csv",'w')
-    # writer = csv.writer(myfile)
-    # writer.writerow(["topic", "word", "count"])
-
+    # clean the topic model text into a data frame first
     file = open(txt)
     df = pandas.DataFrame(columns = ['topic', 'word', 'count'])
     track = 0
@@ -38,9 +35,8 @@ def main():
             df.loc[track] = [topic, word, count]
             track += 1
 
-    # df = pandas.read_csv(csv, encoding='utf-8-sig')
+
     lexicon = pandas.read_csv("SentiWords_cleaned.csv", encoding='utf-8-sig')
-    
 
     num_topics = max(df['topic'])+1
 
