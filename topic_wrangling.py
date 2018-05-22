@@ -17,10 +17,28 @@ return: a CSV file with columns: 'topic', 'word', 'count', 'prop', 'score', 'x',
 '''
 
 def main():
-    csv = sys.argv[1]
-
+    txt = sys.argv[1]
     csv_final = sys.argv[2]
-    df = pandas.read_csv(csv, encoding='utf-8-sig')
+
+    # myfile = open("metoo_d3.csv",'w')
+    # writer = csv.writer(myfile)
+    # writer.writerow(["topic", "word", "count"])
+
+    file = open(txt)
+    df = pandas.DataFrame(columns = ['topic', 'word', 'count'])
+    track = 0
+
+    for line in file:
+        l = line.split()
+        word = l[1]
+        for i in range(len(l)-2):
+            cur = [int(i) for i in l[i+2].split(":")]
+            topic = cur[0]
+            count = cur[1]
+            df.loc[track] = [topic, word, count]
+            track += 1
+
+    # df = pandas.read_csv(csv, encoding='utf-8-sig')
     lexicon = pandas.read_csv("SentiWords_cleaned.csv", encoding='utf-8-sig')
     
 
