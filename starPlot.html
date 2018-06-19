@@ -1,7 +1,21 @@
 <html><html>
 <head>
-<script src="http://d3js.org/d3.v3.js" charset="utf-8"></script>
+
+<script
+src="https://code.jquery.com/jquery-3.2.1.min.js"
+integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous"></script>
+
+<!-- script for color scales -->
+<script src="http://d3js.org/d3.v4.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3-color.v1.min.js"></script>
+<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.js"></script>
+
 <title>Making a scatterplot in D3</title>
+
 <style type="text/css">
   body {
     font-family: sans-serif;
@@ -10,7 +24,7 @@
 
   .axis path,
   .axis line {
-    fill: none;
+    fill: transparent;
     stroke: #000;
     shape-rendering: crispEdges;
   }
@@ -26,13 +40,56 @@
     font-weight: bold;
     cursor: pointer;
   }
+
+  table { font-family: Arial;
+    cell-spacing: 0;
+    font-style: normal;
+    font-size: 16px;
+    border-collapse: collapse;
+    border: 1px solid black;
+    empty-cells:show;}
+
+  th { text-align: center;
+    width: 212px;
+    border:1px solid Navy;
+    background-color: Silver}
+
+  td { text-align: center;
+    width: 212px;
+    height: 50px;
+    color : solid black;
+    border:1px solid Navy;
+    empty-cells:show;}
 </style>
 </head>
 
 <body>
+
+      <div id="blurb">
+        <div id="default-blurb">
+    <table>
+      <tr>
+        <th>Word</th>
+        <th>Topic</th>
+        <th>Score (from -1 to 1)</th>
+        <th>Count</th>
+        <th>Proportion (within the topic)</th>         
+      </tr>
+      <tr>
+        <td id = "id1"> &nbsp  </td>
+        <td id = "id2"> &nbsp </td>
+        <td id = "id3"> &nbsp </td>
+        <td id = "id4"> &nbsp </td>
+        <td id = "id5"> &nbsp  </td>         
+      </tr>
+      </table> 
+        </div>
+     </div>
+
+    <div id="vis"> </div>
+
   <div id="linesSVG">
   </div>
-
   <script type="text/javascript" src="starPlot.js"></script>
 </body>
 

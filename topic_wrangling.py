@@ -86,7 +86,8 @@ def main():
 
 
     # print(mat)
-    
+    constant = 20000 # set this as how much you want the distance matrix to be multipled by
+    mat = [[constant * mat[i][j] for j in range(num_topics)] for i in range(num_topics)]
 
     # use the distance/dissimilarity matrix and MDS to calculate coordinates for each topic
     mod = manifold.MDS(max_iter = 3000, dissimilarity = 'precomputed')
@@ -101,6 +102,23 @@ def main():
     coords_df = pandas.DataFrame({'topic': range(0, num_topics), 'x': x_coords, 'y': y_coords})
 
     df = pandas.merge(df, coords_df, on='topic')
+
+    ## group by the data frame and calculate the expected sentiment value for each topic
+    df['helper'] = df['prop']*df['score']
+    help_dat = pandas.DataFrame({'topic': range(0, num_topics), 'expected': df.groupby(['topic'])['helper'].sum()})
+
+    # scale the expected values so that they work on the color scales in D3 better
+    maxVal = abs(help_dat['expected']).max()
+    normal_const = 1/abs(maxVal)
+    help_dat['expected_scaled'] = help_dat.loc[:, 'expected'] * (1) * normal_const # 1/-1 is when the diverging scale needs to be flipped
+
+    df.drop('helper', axis = 1)
+    df = pandas.merge(df, help_dat, on = 'topic')
+
+    # only keep words with count > 1
+    df = df[df['count'] > 1]
+    
+    df = reset(df)
 
     # convert to csv
     df.to_csv(csv_final, encoding='utf-8-sig', index=False)
