@@ -1,1 +1,0 @@
-It makes good sense to test-drive a sampling of cars as they come off the assembly line.

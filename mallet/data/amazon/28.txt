@@ -1,1 +1,0 @@
-it plays alternate video formats (vcds, svcds, cvds) very well.

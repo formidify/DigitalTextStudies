@@ -1,1 +1,0 @@
-one downside: as of this writing, t-mobile hasn't updated their t-zone system to fully support the 6610.  their website does not show it as a compatible phone, and should i try to access the game downloads on t-zones the system returns an error message saying my phone is not supported.

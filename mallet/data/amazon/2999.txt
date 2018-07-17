@@ -1,1 +1,0 @@
-* does not provide enough volume when connected to larger headphones, or external receivers (car radio).

@@ -1,1 +1,0 @@
-i quickly discovered that the nomad wasn't going to work for me.

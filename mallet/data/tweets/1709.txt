@@ -1,1 +1,0 @@
- WordPress.com doesn't allow you all the plug-ins that a self-hosted WordPress blog would allow.

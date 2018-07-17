@@ -1,1 +1,0 @@
-my one issue with the mediasource software is that, despite pulling id3 tag data from the cdds service, the ripping process fails to populate the " year " field.

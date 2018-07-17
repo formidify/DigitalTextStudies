@@ -1,1 +1,0 @@
-it's because the 256 player uses flash memory (smaller / lighter) and the 30gb uses a hard drive.

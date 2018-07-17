@@ -1,1 +1,0 @@
-pros:  * price and capacity  * slick-looking design and improved interface  * removable battery  cons:  * protective case completely useless as is since it obscures display window.

@@ -1,1 +1,0 @@
-it makes the dvd player to switch between interlace mode and progressive scan mode.

@@ -1,1 +1,0 @@
-the higher the number the better the quality (less data compression is used) and the larger the file size.

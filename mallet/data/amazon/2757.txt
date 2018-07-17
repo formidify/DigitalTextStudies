@@ -1,1 +1,0 @@
-if you hold down the scroll wheel too long (which is common if you have a lot of songs to sort through), it will get " stuck " rapidly going through the songs and won't stop until several seconds after you let your finger off of it.

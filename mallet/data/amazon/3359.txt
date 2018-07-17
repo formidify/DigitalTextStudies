@@ -1,1 +1,0 @@
-ps: (mediasource provides similar functions with ms mediaplay such like cd ripping, tagging, music database managing, music file transfering, and more)  now i use ms mediaplayer, musicmatch (free downladed), and " explorer / my computer / grab files from disk c or d into the player " to replace the mediasource.

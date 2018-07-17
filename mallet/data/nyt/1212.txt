@@ -1,1 +1,0 @@
-It will even call again if it gets a busy signal, but just once.

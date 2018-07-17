@@ -1,1 +1,0 @@
-transfer through windows explorer - windows recognizes the jukebox as an additional hard disk, so it allows you to simply drag and drop files from windows explorer to a folder for the nomad.

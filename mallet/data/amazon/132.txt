@@ -1,1 +1,0 @@
-it would spin, read, spin some more and then show on the display that there was no disc.

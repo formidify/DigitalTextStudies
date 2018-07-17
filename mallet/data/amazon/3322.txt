@@ -1,1 +1,0 @@
-the only complaint seems to be that the disk rotation is slow, leading to longer delays in some functions (playback and even a slow display of the menu?).

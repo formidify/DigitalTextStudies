@@ -1,1 +1,0 @@
-The phone, produced by Motorola, calls home when the engine is started, and warbles its warning in a series of high and low beeps.

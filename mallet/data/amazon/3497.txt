@@ -1,1 +1,0 @@
-every time nomad thinks the file is corrupt the os freezes.

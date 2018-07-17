@@ -1,1 +1,0 @@
-the zen xtra will transfer the files to the player, but not the folder name.

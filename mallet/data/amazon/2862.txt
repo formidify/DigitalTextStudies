@@ -1,1 +1,0 @@
-if you have two tracks with exactly the same name on one disk, it will not copy both -- it gives you the option of skipping the second or overwriting the first with the second.

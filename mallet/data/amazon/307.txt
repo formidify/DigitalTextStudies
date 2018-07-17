@@ -1,1 +1,0 @@
-now it will not load any disk or just says that there is no disk.

@@ -1,1 +1,0 @@
-also, for some reason the picture looks washed out on s-video, with lots of color bleeding, compared to a component connection (should not be much of a perceptible difference on a 27 " tv).

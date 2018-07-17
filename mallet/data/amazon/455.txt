@@ -1,1 +1,0 @@
-after " loading " for what seemed like a very long time, the display indicated " no disk ".

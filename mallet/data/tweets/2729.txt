@@ -1,1 +1,0 @@
-Oh noes! The  downloader doesn't seem to work with #Ubuntu 11.04. :(

@@ -1,1 +1,0 @@
-once you start sending files, it'll continue until it's done or it hits a song that has the same title as another song... at which point you can skip, skip all, replace, replace all, or cancel.

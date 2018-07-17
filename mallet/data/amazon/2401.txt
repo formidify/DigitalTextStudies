@@ -1,1 +1,0 @@
-after receiving the box from amazon, i proceeded with charging the unit for the specified 4 hours, after which i installed the software and connected the unit to my pc via usb 2.0.  the pc quickly picked up on it and attempted to install the software, which failed, as creative chose not to follow microsoft standards, whatever.

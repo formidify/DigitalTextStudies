@@ -1,1 +1,0 @@
-i found using mediasource to load your songs to the nomad jukebox to be much easier and faster than using windows explorer.

@@ -1,1 +1,0 @@
-2) having unfilled id3 tags will cause music to be potentially placed in a folder called " unknown.

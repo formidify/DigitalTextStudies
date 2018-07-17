@@ -1,1 +1,0 @@
-this provides drag &amp; drop transfers of music between the computer &amp; zen; each time it transfers music to the zen it asks if you want to generate a playlist; it allows playlists developed in other software to be transferred to the zen (.

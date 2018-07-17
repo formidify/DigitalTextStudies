@@ -1,1 +1,0 @@
-b. fast mediasource cd ripping - takes about 40 seconds for a cd on my pentium 4 pc (2.4 ghz with 1gb ram) with 52x drive.

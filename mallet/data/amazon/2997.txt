@@ -1,1 +1,0 @@
-* eax equalizer accentuates dimished quality of mp3 files.

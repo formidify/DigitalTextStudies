@@ -1,1 +1,0 @@
-it would just spin up and stop, and display " no disc ".

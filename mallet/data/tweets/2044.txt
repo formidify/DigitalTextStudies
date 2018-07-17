@@ -1,1 +1,0 @@
- I could probably write a built in DI framework for Nemerle since the macros make it easy to emit constructor calls without using IL

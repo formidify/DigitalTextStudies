@@ -1,1 +1,0 @@
-Battled for hours if not days on css crapola. No idea why browser not picking up css writing at the end. Only if I put it at top of style

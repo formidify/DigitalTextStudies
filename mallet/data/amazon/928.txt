@@ -1,1 +1,0 @@
-some of the great gains over g2 --  1. the ability to selectively switch to raw format during record review gives you incredible more post-processing flexibility.

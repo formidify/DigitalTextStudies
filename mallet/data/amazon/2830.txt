@@ -1,1 +1,0 @@
-the eax sound enhancement feature didn't do enough for me and the custom eq was a limited 5 band eq.

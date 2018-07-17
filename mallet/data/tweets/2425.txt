@@ -1,1 +1,0 @@
-At best, the JavaScript/HTML5 API will be used to build some cool widgets on top of Windows 8. This is definitely a smart move from MS.

@@ -1,1 +1,0 @@
-since the zen xtra does not use a folder structure, the " duplicate name " problem stems from the actual file name, not from the song's title / artist / album.

@@ -1,1 +1,0 @@
-artist, album and genre are only mp3 tags which are supported buy this player, and if you have 100 artists would be good to have another subcategory.

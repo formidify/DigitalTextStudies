@@ -1,1 +1,0 @@
-can someone recommend a good DocBook XML editor, preferably free? Not thrilled with Serna or XXE. would like a nice GUI. #techcomm

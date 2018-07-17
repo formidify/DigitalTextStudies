@@ -1,1 +1,0 @@
-my " fast forward " button works, but it takes a little extra pressure on it to make it go.

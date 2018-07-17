@@ -1,1 +1,0 @@
-file transfers are fast, nearly a song per second via usb 2.0.  several people have complained of difficulty transferring multiple songs with the same title.

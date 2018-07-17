@@ -1,1 +1,0 @@
-this player seems to work fine with everything else.

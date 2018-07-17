@@ -1,1 +1,0 @@
-It illustrates how to tell which cabs are occupied, and it gives fare rates and normal fare ranges.

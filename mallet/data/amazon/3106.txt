@@ -1,1 +1,0 @@
-but this is * not documented * in the zen manual - neither the hard copy nor the cd version.

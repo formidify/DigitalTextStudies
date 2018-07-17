@@ -1,1 +1,0 @@
- RE: CISA PREP - on page 166 for PERT, is critical path always based on the worst case estimate (the last number)?

@@ -1,1 +1,0 @@
-it seems to be a little slow when identifying a new disc that's inserted - maybe 10 seconds of wait.

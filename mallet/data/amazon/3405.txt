@@ -1,1 +1,0 @@
-accessing files by artist and album (i mostly look things up by artist) is easy and intuitive.

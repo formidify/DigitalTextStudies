@@ -1,1 +1,0 @@
-after i had it a couple weeks, it got into a state where it could never find the device, no matter how often i rebooted my pc, reset the device, reloaded drivers, etc, etc.

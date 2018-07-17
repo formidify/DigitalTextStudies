@@ -1,1 +1,0 @@
-first, the cons... a tad bulky... not the most asthetic looking player... and doesn't support a folder stucture.

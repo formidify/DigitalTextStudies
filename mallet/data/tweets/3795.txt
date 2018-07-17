@@ -1,1 +1,0 @@
-I like FDE, but it's a pain to set up. some how messed up the pass phrase. don't have another 7 hours to wait for debian to set it up

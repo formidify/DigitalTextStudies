@@ -1,1 +1,0 @@
-Wait for pay per view or rental but don't dismiss BarberShop out of hand.

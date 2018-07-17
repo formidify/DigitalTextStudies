@@ -1,1 +1,0 @@
-this provides added protection for the camera lens and allows the use of filters.

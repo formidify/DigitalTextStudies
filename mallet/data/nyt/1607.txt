@@ -1,1 +1,0 @@
-A light sensor implanted in the wallet causes it to beep if the wallet is returned to its owner's pocket without the credit card in its place.

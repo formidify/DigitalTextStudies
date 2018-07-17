@@ -1,1 +1,0 @@
-cons:  navigation system - the zen xtra uses id3 tags that are embedded in the mp3 files to organize your songs.

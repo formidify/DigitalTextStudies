@@ -1,1 +1,0 @@
-it seems like movement, even small movement, causes skipping in playback and even the device freezing.

@@ -1,1 +1,0 @@
-2) music organization is based on id3 (by genre, artist, album, etc.

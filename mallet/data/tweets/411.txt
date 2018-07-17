@@ -1,1 +1,0 @@
-Lettering.js - A jQuery plugin for radical web typography.  #webdesign

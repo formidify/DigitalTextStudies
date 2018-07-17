@@ -1,1 +1,0 @@
-not an urgent issue, as it still works...  all other buttons are pretty sensitive to touch and work well.

@@ -1,1 +1,0 @@
-the signal to noise ratio (the ratio of detectable, useful data to unusable garbage in, say, a radio wave; a larger stn ratio is better) is nice and high at 98 decibles, and it should be noted that apple refuses to release the stn ratio of any of the ipods.

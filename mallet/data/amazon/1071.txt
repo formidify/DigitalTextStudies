@@ -1,1 +1,0 @@
-the function lever - the one which switches between capture and view mode feels fragile.

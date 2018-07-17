@@ -1,1 +1,0 @@
-if you decide to encode at 320 you will fit less on this device than someone who encodes at 128kps.

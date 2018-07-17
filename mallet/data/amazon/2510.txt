@@ -1,1 +1,0 @@
-you should consider this when deciding what bit rate you want to use and how much you want to put on the player.

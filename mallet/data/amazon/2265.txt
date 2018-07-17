@@ -1,1 +1,0 @@
-after fiddling around with it for a while, i notice a few dissapointments:  transfering - i could not get my songs to completely transfer via usb 1.1 or 2.0.  it would only transfer 30 or so songs, and then come up with an error.

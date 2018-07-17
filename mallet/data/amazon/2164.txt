@@ -1,1 +1,0 @@
-the setup process for the nomad is infuriating, and the interface with the player is sub-par.

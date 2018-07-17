@@ -1,1 +1,0 @@
-this is unnecessary with id3 tags but people who like to organize their music in folders will not like the zen as the audio files do not allow subfolders but rely on id3 tags.

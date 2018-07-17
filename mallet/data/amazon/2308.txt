@@ -1,1 +1,0 @@
-the mediasource itself was flaky... crashing my explorer twice within the first hour (the crash didn't require a reboot)... but after another reboot, it hasn't crashed since.

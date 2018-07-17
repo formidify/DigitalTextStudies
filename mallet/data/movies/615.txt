@@ -1,1 +1,0 @@
-A yarn that respects the Marvel version without becoming ensnared by it.

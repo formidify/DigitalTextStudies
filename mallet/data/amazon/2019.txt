@@ -1,1 +1,0 @@
-the service deafults to showing the information associated with your billing zip code, but you can change the default and seach other areas while on the go.

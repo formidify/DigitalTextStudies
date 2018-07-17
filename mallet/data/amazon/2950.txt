@@ -1,1 +1,0 @@
-it did not lock up my computer or require a reboot.

@@ -1,1 +1,0 @@
-the interface used could be better designed.

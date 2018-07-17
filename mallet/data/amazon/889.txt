@@ -1,1 +1,0 @@
-the canon software for raw images does not present you with a raw image at all, but the raw image after it has been processed by all the image-affecting settings in the camera.

@@ -1,1 +1,0 @@
-the environmental audio, however, is almost completely useless and has made most of my songs sound worse than without it (i encode my songs at 192-256 kbps without variable bit rates.)

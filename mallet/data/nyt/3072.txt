@@ -1,1 +1,0 @@
-These include ordering precincts to use their existing authority to turn off the alarms.

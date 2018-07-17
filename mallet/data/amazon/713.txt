@@ -1,1 +1,0 @@
-i am using kingston 512mb cf which works great and is very fast.

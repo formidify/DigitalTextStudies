@@ -1,1 +1,0 @@
-despite the instructions insisting that the process was fairly automatic, i had to install the usb drivers and the nomad interface software manually.

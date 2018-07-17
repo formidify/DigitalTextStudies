@@ -1,1 +1,0 @@
-the battery lasts very long when playing music, but writing files to the player drains the battery fast, so you need to have it plugged into an outlet when sending files.

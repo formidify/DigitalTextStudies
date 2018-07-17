@@ -1,1 +1,0 @@
-it helps avoid the problem of a color cast on the pictures, especially in mixed-light settings.

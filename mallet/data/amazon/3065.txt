@@ -1,1 +1,0 @@
-you can also delete songs from the player itself, and create playlists - on the fly - on your player.
