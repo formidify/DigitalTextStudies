@@ -1,0 +1,1 @@
+it will read and play all cd audio disc.

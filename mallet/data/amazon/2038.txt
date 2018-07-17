@@ -1,0 +1,1 @@
+the internet functions of the phone - wap and gprs - will only work through t-mobile's services, because they have deleted the menu options that would enable you to configure the phone to be used on a different network.

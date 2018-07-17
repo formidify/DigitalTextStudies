@@ -1,0 +1,1 @@
+i did already have mediasource installed due to owning the creative audigy 2 soundcard but i did need to re-install it from the supplied cd as the older version did not have the connector to the zen.

@@ -1,0 +1,1 @@
+8. perhaps inspired by the canon's factory white-correction settings (which were found lacking and had to be altered by a user before the white edges from buildings etc could be cleaned out), the g3 has much sharper white offsets.

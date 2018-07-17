@@ -1,0 +1,1 @@
+Package labels now need only say that the product contains one or more of several oils that are listed.

@@ -1,0 +1,1 @@
+ they seem to just stall here. If I click then the app unloads back to the Metro tile-screen.

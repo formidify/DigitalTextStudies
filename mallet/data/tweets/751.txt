@@ -1,0 +1,1 @@
+Ugh, it's damn annoying when an RSS feed has its URL changed, and no heads-up was given. I guess we should dump RSS / Atom feeds now?

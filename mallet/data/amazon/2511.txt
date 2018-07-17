@@ -1,0 +1,1 @@
+if you're someone who wants to put 10,000 songs on this thing you may want to encode at the lower end (typically 128 is considered close to cd quality).

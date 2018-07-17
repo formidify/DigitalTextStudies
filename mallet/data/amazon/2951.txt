@@ -1,0 +1,1 @@
+the software lets you pop in a cd and then scans the internet to name the artist, track name and album name.

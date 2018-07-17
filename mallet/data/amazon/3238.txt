@@ -1,0 +1,1 @@
+the workaround is to update id3 tags on your files (through mediasource) but it can be a hassle if you have many such music files.

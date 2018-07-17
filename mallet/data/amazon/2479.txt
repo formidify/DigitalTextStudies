@@ -1,0 +1,1 @@
+otherwise, you'll have to mess around a lot with filenames inside the (decent) nomad explorer, which is not fun at all.

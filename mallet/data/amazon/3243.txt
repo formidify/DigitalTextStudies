@@ -1,0 +1,1 @@
+6) the case occludes the display screen when it is closed.

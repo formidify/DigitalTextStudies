@@ -1,0 +1,1 @@
+the light goes from red to green but no display or any operation whatsoever.

@@ -1,0 +1,1 @@
+it referred to a " microsoft jet database engine " error and the install program suggested i download a service pack from the ms website to fix the problem;  i did that and re-installed the software but had the same error.

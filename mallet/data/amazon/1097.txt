@@ -1,0 +1,1 @@
+moving the viewfinder elsewhere on the camera will remove the lens distortion but increase the parallax phenomenon.

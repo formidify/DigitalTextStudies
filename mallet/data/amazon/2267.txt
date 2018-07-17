@@ -1,0 +1,1 @@
+scroll button - the scroll wheel was a nice idea to keep less clutter, but the button would sometimes get stuck or keep scrolling.

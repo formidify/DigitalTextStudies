@@ -1,0 +1,1 @@
+There is no inherent conflict between security and good architecture.

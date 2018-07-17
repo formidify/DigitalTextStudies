@@ -1,0 +1,1 @@
+the zen doesn't support folders so it is not really a storage device; even with third party software that " creates " folders, documents and programs can't be launched from the zen, so it is not a hard disk, it's a storage device at best.

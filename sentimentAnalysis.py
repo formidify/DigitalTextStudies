@@ -16,6 +16,12 @@ def parse_sentiment(file, myfile):
 	writer.writerow(["neg", "neu", "pos", "compound", "line"])
 	for row in reader:
 		line = row['status_message']
+
+		# These pre-processing replacements are for the tweets dataset specifically
+		line = line.replace('@anonymous', '')
+		line = line.replace('http://url_removed', '')
+		line = line.replace('&amp', '')
+		
 		print(line)
 
 		ss = sid.polarity_scores(line)

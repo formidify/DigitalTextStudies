@@ -1,0 +1,1 @@
+minor complaints: 1) even though the music is sorted via id3 tag on the player, the option to search for music contained in a folder is unavailable.

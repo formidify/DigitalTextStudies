@@ -1,0 +1,1 @@
+at double-speed (2x forward speed), it still plays mp3s with sound -- they are pitch-corrected and smooth, but twice as fast!

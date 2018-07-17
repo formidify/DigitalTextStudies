@@ -1,0 +1,1 @@
+however, using the lcd seems to eliminate this minor problem.

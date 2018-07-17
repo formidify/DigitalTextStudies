@@ -1,0 +1,1 @@
+contrary to what ive read elsewhere, the g3 does sync at 1/250 of a second with third-party flashes, just as it does with the dedicated flashes from canon.

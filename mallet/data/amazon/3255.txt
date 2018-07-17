@@ -1,0 +1,1 @@
+resources: http://www.nomadworld.com, http://www.nomadness.net  pros summary:  great sound; good interface; replaceable, powerful battery; good software; wake-up, sleep timers; multiple play modes  cons summary:  not plug &amp; play; relies on id3; no fm or recording  bottom-line:  can't beat carrying 500-cd collection with me wherever i go.

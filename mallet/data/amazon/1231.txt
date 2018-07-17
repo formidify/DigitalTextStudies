@@ -1,0 +1,1 @@
+in that too, there isn't a direct way to add date; time - you got to say ' print images ' to a different directory in which there is an option to specify the date; time.. even the slightest of the shakes totally distorts your image.

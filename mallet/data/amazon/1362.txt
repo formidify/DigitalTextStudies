@@ -1,0 +1,1 @@
+one downside though is that autofocus does not work well when battery is low.

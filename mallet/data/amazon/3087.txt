@@ -1,0 +1,1 @@
+btw, if you * are * ripping your cds, mediasource accesses the cddb music catalog over the internet and the few cds i experimented with all provided good quality [ correct &amp; uncluttered ] tag information.

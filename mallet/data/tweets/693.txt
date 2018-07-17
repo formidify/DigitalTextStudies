@@ -1,0 +1,1 @@
+ getting database connection errors on my wordpress sites -  and 

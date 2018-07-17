@@ -1,0 +1,1 @@
+songs are recognized automatically by id3 tags, which at first i was against since i had organized my files by folder with a previous player from iriver.

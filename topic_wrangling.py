@@ -57,10 +57,13 @@ def main():
     
     df = reset(df)
 
-    # calculate coordinates by creating a distance matrix
+    ## Calculating distance matrices (2 options)
+
     mat = [[0 for _ in range(num_topics)] for _ in range(num_topics)]
     all_words = df['word'].unique()
 
+    # a) calculate coordinates by creating a distance matrix from euclidean distance
+    '''
     topics_list = [i for i in range(num_topics)] # set as static
 
     for i in range(len(all_words)):
@@ -83,7 +86,36 @@ def main():
 
                 mat[m][n] = mat[m][n] + dist
                 mat[n][m] = mat[n][m] + dist
+    '''
 
+    # Takes 2 vectors a, b and returns the cosine similarity between the two. Codes created by Mason Gallo (see
+    # https://masongallo.github.io/machine/learning,/python/2016/07/29/cosine-similarity.html for more details).
+
+    def cos_sim(a, b):
+        dot_product = np.dot(a, b)
+        norm_a = np.linalg.norm(a)
+        norm_b = np.linalg.norm(b)
+        return dot_product / (norm_a * norm_b)
+
+    # b) instead of calculating euclidean distance between vectors, use cosine similarity instead
+
+    vectors = [[0 for _ in range(all_words.shape[0])] for _ in range(num_topics)]
+
+    for i in range(len(all_words)):
+        word = all_words[i]
+        df_word = df.loc[df['word'] == word].copy()
+        num_words = df_word.shape[0]
+
+        df_word = reset(df_word)
+
+        for j in range(num_words):
+            vectors[df_word.loc[j, 'topic']][i] = df_word.loc[j, 'prop']
+
+    for m in range(num_topics):
+        for n in range(m+1, num_topics):
+            dist = cos_sim(vectors[m], vectors[n])
+            mat[m][n] = dist
+            mat[n][m] = dist
 
     # print(mat)
     constant = 20000 # set this as how much you want the distance matrix to be multipled by
@@ -106,6 +138,11 @@ def main():
     ## group by the data frame and calculate the expected sentiment value for each topic
     df['helper'] = df['prop']*df['score']
     help_dat = pandas.DataFrame({'topic': range(0, num_topics), 'expected': df.groupby(['topic'])['helper'].sum()})
+
+    '''
+    help_dat = findSentiment(doc_topics, documents) # the other option to calculate expected sentiments
+    '''
+    print(help_dat['expected'])
 
     # scale the expected values so that they work on the color scales in D3 better
     maxVal = abs(help_dat['expected']).max()

@@ -1,0 +1,1 @@
+6. the g2's " color effect " exposure mode has now been removed, the replacement is a selectable " effect func " menu option available in all exposure modes.

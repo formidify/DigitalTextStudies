@@ -1,0 +1,1 @@
+there are six default settings (off, vivid, sepia, neutral, low sharpening, b &amp; w) as well as a ' custom effect ' that allows you to control sharpening, contrast and saturation.

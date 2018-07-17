@@ -1,0 +1,1 @@
+Do our post show up on newsfeed public?

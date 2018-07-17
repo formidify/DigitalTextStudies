@@ -1,0 +1,1 @@
+cons:  1) player is not plug and play - need to install nomad explorer first and mediasource to transfer files and i had to be patient as i was used to winxp detecting the player and dragging and dropping the music files into it.

@@ -1,0 +1,1 @@
+the menu options appear one at a time, taking up the whole screen, and one has to scroll down one by one, or have memorized where they are in the menu order, to select them by using the number keypad.

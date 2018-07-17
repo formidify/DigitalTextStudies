@@ -1,0 +1,1 @@
+the player hangs up on file transfer every once-in-a-while, prompting a reset.

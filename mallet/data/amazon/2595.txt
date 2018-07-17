@@ -1,0 +1,1 @@
+i only have one question, when i add tracks to my nomad, via nomad explorer, they are automatically put in alphebetical order, rather than album order.

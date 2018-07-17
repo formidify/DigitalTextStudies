@@ -1,0 +1,1 @@
+5.  if you use software correctly, put in all the id3 tags, you will get an awesome database collection, from which you can easily access your songs.

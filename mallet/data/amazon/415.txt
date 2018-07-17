@@ -1,0 +1,1 @@
+output went black and white only via both s-video and composite connections, and with no v-hold.

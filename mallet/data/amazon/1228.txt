@@ -1,0 +1,1 @@
+this camera keeps on autofocussing in auto mode with a buzzing sound which can't be stopped.

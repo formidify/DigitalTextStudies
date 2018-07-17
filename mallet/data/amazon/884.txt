@@ -1,0 +1,1 @@
+the second problem is solved by more direct lighting from the metz (with the attendant shadows unfortunately).

@@ -1,0 +1,1 @@
+8.  when you turn on your player, the player turns on really fast, and the music continues to play, as you left it when you were turning it off.

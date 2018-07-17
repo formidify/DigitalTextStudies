@@ -1,0 +1,1 @@
+when i got it home, i discovered that the menu options for sending messages via either text or email simply weren't there:  it defaulted to unchangeable email.

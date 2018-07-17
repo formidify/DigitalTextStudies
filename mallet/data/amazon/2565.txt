@@ -1,0 +1,1 @@
+transfer files is easy using notmad, however again, would be great if nomad supported folders like iriver, rca lyra and some other.

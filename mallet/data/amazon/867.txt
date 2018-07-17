@@ -1,0 +1,1 @@
+the two limitations i knew i would have to deal with are the very long lag time before it focus-locks (even in bright light), and the unsatisfactory light quality of the built-in flash.

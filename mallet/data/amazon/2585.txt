@@ -1,0 +1,1 @@
+i haven't checked the resilience of my xtra yet, and don't plan to.

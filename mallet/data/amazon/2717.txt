@@ -1,0 +1,1 @@
+whe you transfer your songs to the jukebox, it dumps all of them into a single folder, and then sorts them by the id3 tags.

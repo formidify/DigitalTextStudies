@@ -1,0 +1,1 @@
+zen allows you to scroll up and down the song list selected on the player.

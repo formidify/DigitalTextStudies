@@ -1,0 +1,1 @@
+the time taken in shifting from one menu option to other is in microseconds only.

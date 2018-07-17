@@ -1,0 +1,1 @@
+simply configure the mediasource software (or windows media player, or your ripper-du-jour) to create file names that include artist and (especially) album names in addition to track names.

@@ -1,0 +1,1 @@
+depressing the scroll button (for selecting) is not always responsive.

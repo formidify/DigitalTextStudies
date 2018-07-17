@@ -1,0 +1,1 @@
+A poker straight is a hand of five consecutive numbers.
